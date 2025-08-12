@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('message');
             $table->timestamps();
 
-            $table->foreign('id_nilai')->references('id')->on('nilai')->onDelete('cascade');
+            $table->foreign('id_nilai')->references('id')->on('nilai_quis')->onDelete('cascade');
         });
     }
 

@@ -14,53 +14,85 @@
 
         <!-- Style -->
         <link rel="stylesheet" href="../css/app.css">
+        <script src="https://unpkg.com/feather-icons"></script>
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-white flex">
-        <div class="w-1/5 h-screen bg-gray-200 p-4 justify-between flex flex-col">
+    <body class="bg-gray-100 flex">
+        <div class="w-1/5 h-screen bg-white p-4 shadow-lg justify-between flex flex-col">
 
             <div class="w-full flex flex-col gap-4">
-                <a href="/" class="text-3xl mb-6 font-serif">CONERING</a>
-                @if (Request::is('dashboard'))
-                    <a href="/dashboard" class="bg-[#5f5757] w-full px-4 py-2 rounded-md font-medium text-white">Dashboard</a>
-                @else
-                    <a href="/dashboard" class="bg-white w-full px-4 py-2 rounded-md font-medium text-black">Dashboard</a>
-                @endif
+    <a href="/" class="text-3xl mb-6 font-bold text-blue-400">CONERING</a>
+    
+    @if (Request::is('dashboard'))
+        <a href="/dashboard" class="flex items-center gap-2 bg-blue-400 w-full px-4 py-2 rounded-md font-medium text-white">
+            <i data-feather="home"></i>
+            Dashboard
+        </a>
+    @else
+        <a href="/dashboard" class="flex items-center gap-2 bg-white w-full px-4 py-2 rounded-md font-medium text-black hover:bg-gray-100">
+            <i data-feather="home"></i>
+            Dashboard
+        </a>
+    @endif
 
-                @if (Request::is('admin/materi'))
-                    <a href="/admin/materi" class="bg-[#5f5757] w-full px-4 py-2 rounded-md font-medium text-white">Materi</a>
-                @else
-                    <a href="/admin/materi" class="bg-white w-full px-4 py-2 rounded-md font-medium text-black">Materi</a>
-                @endif
+    @if (Request::is('admin/materi'))
+        <a href="/admin/materi" class="flex items-center gap-2 bg-blue-400 w-full px-4 py-2 rounded-md font-medium text-white">
+            <i data-feather="book-open"></i>
+            Materi
+        </a>
+    @else
+        <a href="/admin/materi" class="flex items-center gap-2 bg-white w-full px-4 py-2 rounded-md font-medium text-black hover:bg-gray-100">
+            <i data-feather="book-open"></i>
+            Materi
+        </a>
+    @endif
 
-                @if (Request::is('admin/proyek') || Request::is('admin/monitor/proyek'))
-                    <a href="/admin/proyek" class="bg-[#5f5757] w-full px-4 py-2 rounded-md font-medium text-white">Proyek</a>
-                @else
-                    <a href="/admin/proyek" class="bg-white w-full px-4 py-2 rounded-md font-medium text-black">Proyek</a>
-                @endif
+    @if (Request::is('admin/proyek') || Request::is('admin/monitor/proyek'))
+        <a href="/admin/proyek" class="flex items-center gap-2 bg-blue-400 w-full px-4 py-2 rounded-md font-medium text-white">
+            <i data-feather="briefcase"></i>
+            Proyek
+        </a>
+    @else
+        <a href="/admin/proyek" class="flex items-center gap-2 bg-white w-full px-4 py-2 rounded-md font-medium text-black hover:bg-gray-100">
+            <i data-feather="briefcase"></i>
+            Proyek
+        </a>
+    @endif
 
-                @if (Request::is('admin/kelompok/kerja') || Request::is('admin/detail/quis') || Request::is('admin/create/quis') || Request::is('admin/list/quis'))
-                    <a href="/admin/kelompok/kerja" class="bg-[#5f5757] w-full px-4 py-2 rounded-md font-medium text-white">Kelompok kerja</a>
-                @else
-                    <a href="/admin/kelompok/kerja" class="bg-white w-full px-4 py-2 rounded-md font-medium text-black">Kelompok kerja</a>
-                @endif
+    @if (Request::is('admin/kelompok/kerja') || Request::is('admin/detail/quis') || Request::is('admin/create/quis') || Request::is('admin/list/quis'))
+        <a href="/admin/kelompok/kerja" class="flex items-center gap-2 bg-blue-400 w-full px-4 py-2 rounded-md font-medium text-white">
+            <i data-feather="users"></i>
+            Kelompok kerja
+        </a>
+    @else
+        <a href="/admin/kelompok/kerja" class="flex items-center gap-2 bg-white w-full px-4 py-2 rounded-md font-medium text-black hover:bg-gray-100">
+            <i data-feather="users"></i>
+            Kelompok kerja
+        </a>
+    @endif
 
-                @if (Request::is('admin/penilaian/evaluasi'))
-                    <a href="/admin/penilaian/evaluasi" class="bg-[#5f5757] w-full px-4 py-2 rounded-md font-medium text-white">Penilaian & Evaluasi</a>
-                @else
-                    <a href="/admin/penilaian/evaluasi" class="bg-white w-full px-4 py-2 rounded-md font-medium text-black">Penilaian & Evaluasi</a>
-                @endif
-            </div>
+    @if (Request::is('admin/penilaian/evaluasi'))
+        <a href="/admin/penilaian/evaluasi" class="flex items-center gap-2 bg-blue-400 w-full px-4 py-2 rounded-md font-medium text-white">
+            <i data-feather="check-circle"></i>
+            Penilaian & Evaluasi
+        </a>
+    @else
+        <a href="/admin/penilaian/evaluasi" class="flex items-center gap-2 bg-white w-full px-4 py-2 rounded-md font-medium text-black hover:bg-gray-100">
+            <i data-feather="check-circle"></i>
+            Penilaian & Evaluasi
+        </a>
+    @endif
+</div>
 
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-
-                <x-dropdown-link :href="route('logout')" class="bg-red-500 rounded-md border border-transparent border-dashed hover:border-red-500 font-bold text-white hover:text-red-500"
-                        onclick="event.preventDefault();
-                                    this.closest('form').submit();">
-                    {{ __('Log Out') }}
-                </x-dropdown-link>
-            </form>
+           <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <x-dropdown-link :href="route('logout')" 
+            class="bg-red-500 flex items-center gap-2 rounded-md border border-transparent border-dashed hover:border-red-500 font-bold text-white hover:text-red-500"
+            onclick="event.preventDefault(); this.closest('form').submit();">
+            <i data-feather="log-out" class="w-5 h-5"></i> {{ __('Log Out') }}
+        </x-dropdown-link>
+    </form>
         </div>
 
         <div class="w-full h-screen overflow-y-scroll">            
@@ -97,5 +129,9 @@
             @endif
         </div>
         
+        <!-- Aktifkan ikon -->
+        <script>
+            feather.replace();
+        </script>
     </body>
 </html>
